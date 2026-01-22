@@ -59,6 +59,7 @@ void incorrectPassword(){
   delay(400);
   lcd.display();
   delay(400);
+  restartDisplay();
 }
 
 void correctPassword(){
@@ -75,17 +76,23 @@ void correctPassword(){
   delay(400);
   lcd.display();
   delay(400);
+  restartDisplay();
 }
 
-/*void restartDisplay(){
+void restartDisplay(){
   for(int i=0; i< 4; i++){
   	vetorSenha[i] = '_';
   }
   posicao = 0;
-}*/
+  lcd.clear();
+  lcd.setCursor(1, 0);
+  lcd.print("DIGITE A SENHA");
+  lcd.setCursor(6, 1);
+  lcd.print(vetorSenha);
+}
 
 void loop() {
-   char tecla = teclado.getKey();
+  char tecla = teclado.getKey();
 
   if (tecla && posicao < 4) {
     vetorSenha[posicao] = tecla;
